@@ -4,66 +4,63 @@
         <title>From Perokok</title>
     </head>
     <body>
-        <div>
-            <p><br><input type="text"></p>
-        </div>
-        
-        <di>
-            <label for="nama">Siapa nama anda?</label>
+
+        <from action="index.html">
             <div>
-                <input id="nama" type="text">
+                <label for="nama">Siapa nama anda?</label>
+                <div>
+                    <input id="nama" type="text">
+                </div>
             </div>
-        </di>
-        
-        <di>
-            <label for="umur">Berapa umur anda?</label>
+            
+            <di>
+                <label for="umur">Berapa umur anda?</label>
+                <div>
+                    <input id="umur" type="text">
+                </div>
+            </di>
+            <di>
+                <label for="gender">Apa jenis kelammin anda?</label>
+                <div id="gender">
+                    <input type="radio" id="choice1" value="jenis_kelamin">
+                    <label for="choice1">Laki-laki</label>
+                    <input type="radio" id="choice2" value="jenis_kelamin">
+                    <label for="choice2">Perempuan</label>
+                </div>
+            </di>
             <div>
-                <input id="umur" type="text">
+                <label for="perokok">Apakah anda perokok?</label>
+                <div id="perokok">
+                    <input type="radio" id="choice3" value="perokok">
+                    <label for="choice3">Ya</label>
+                    <input type="radio" id="choice4" value="perokok">
+                    <label for="choice4">Tidak</label>
+                </div>
             </div>
-        </di>
-
-        <di>
-            <label for="gender">Apa jenis kelammin anda?</label>
-            <div id="gender">
-                <input type="radio" id="choice1" value="jenis_kelamin">
-                <label for="choice1">Laki-laki</label>
-                <input type="radio" id="choice2" value="jenis_kelamin">
-                <label for="choice2">Perempuan</label>
-            </div>
-        </di>
-
-        <div>
-            <label for="perokok">Apakah anda perokok?</label>
-            <div id="perokok">
-                <input type="radio" id="choice3" value="perokok">
-                <label for="choice3">Ya</label>
-                <input type="radio" id="choice4" value="perokok">
-                <label for="choice4">Tidak</label>
-            </div>
-        </div>
-
-        <div>
-            <label for="checkboxUsed">Jika anda perokok, rokok apa yang anda pernah coba?</label>
-            <div id="checkboxUsed">
-                <input type="checkbox" id="used">
-                <label for="used">Gudang Garam Filter</label>
-            </div>
-
             <div>
-                <input type="checkbox" id="used">
-                <label for="used">Lucky Strike</label>
+                <label for="checkboxUsed">Jika anda perokok, rokok apa yang anda pernah coba?</label>
+                <div id="checkboxUsed">
+                    <input type="checkbox" id="used">
+                    <label for="used">Gudang Garam Filter</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="used">
+                    <label for="used">Lucky Strike</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="used">
+                    <label for="used">Marlboro</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="used">
+                    <label for="used">Esse</label>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </div>
             </div>
-
-            <div>
-                <input type="checkbox" id="used">
-                <label for="used">Marlboro</label>
-            </div>
-
-            <div>
-                <input type="checkbox" id="used">
-                <label for="used">Esse</label>
-            </div>
-        </div>
+        </from>
 
         <div>
             <a href="pages/table.html">Table</a>
