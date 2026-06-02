@@ -1,0 +1,88 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f0ebf8;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-container {
+    width: 100%;
+    max-width: 640px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+.form-header {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border-top: 10px solid #673ab7;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+.form-title {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #202124;
+}
+.form-description {
+    font-size: 14px;
+    color: #202124;
+}
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.question-text {
+    font-size: 16px;
+    color: #202124;
+    font-weight: 500;
+}
+.input-container {
+    width: 100%;
+}
+.text-input {
+    width: 50%;
+    border: none;
+    border-bottom: 1px solid #dadce0;
+    padding: 8px 0;
+    font-size: 14px;
+    outline: none;
+    transition: border-bottom 0.2s;
+}
+.text-input:focus {
+    border-bottom: 2px solid #673ab7;
+}
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.option-item input[type="radio"], 
+.option-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.option-text {
+    font-size: 14px;
+    color: #202124;
+}
+.action-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}

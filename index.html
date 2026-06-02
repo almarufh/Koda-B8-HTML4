@@ -1,70 +1,125 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>From Perokok</title>
-    </head>
-    <body>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Survey Perokok</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+.btn-submit {
+    background-color: #673ab7;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.btn-reset {
+    background: none;
+    border: none;
+    color: #673ab7;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 8px;
+}
+.navigation-link {
+    margin-top: 24px;
+    text-align: center;
+}
+.navigation-link a {
+    color: #673ab7;
+    text-decoration: none;
+    font-size: 14px;
+}
+    </style>
+</head>
+<body>
 
-        <from action="index.html">
-            <div>
-                <label for="nama">Siapa nama anda?</label>
-                <div>
-                    <input id="nama" type="text">
-                </div>
-            </div>
-            
-            <di>
-                <label for="umur">Berapa umur anda?</label>
-                <div>
-                    <input id="umur" type="text">
-                </div>
-            </di>
-            <di>
-                <label for="gender">Apa jenis kelammin anda?</label>
-                <div id="gender">
-                    <input type="radio" id="choice1" value="jenis_kelamin">
-                    <label for="choice1">Laki-laki</label>
-                    <input type="radio" id="choice2" value="jenis_kelamin">
-                    <label for="choice2">Perempuan</label>
-                </div>
-            </di>
-            <div>
-                <label for="perokok">Apakah anda perokok?</label>
-                <div id="perokok">
-                    <input type="radio" id="choice3" value="perokok">
-                    <label for="choice3">Ya</label>
-                    <input type="radio" id="choice4" value="perokok">
-                    <label for="choice4">Tidak</label>
-                </div>
-            </div>
-            <div>
-                <label for="checkboxUsed">Jika anda perokok, rokok apa yang anda pernah coba?</label>
-                <div id="checkboxUsed">
-                    <input type="checkbox" id="used">
-                    <label for="used">Gudang Garam Filter</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="used">
-                    <label for="used">Lucky Strike</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="used">
-                    <label for="used">Marlboro</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="used">
-                    <label for="used">Esse</label>
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
-                    <button type="reset">Reset</button>
-                </div>
-            </div>
-        </from>
-
-        <div>
-            <a href="pages/table.html">Table</a>
+    <div class="form-container">
+        
+        <div class="form-header">
+            <div class="form-title">Form Survey Perokok</div>
+            <div class="form-description">Silakan isi data berikut dengan sebenar-benarnya.</div>
         </div>
 
-    </body>
+        <div class="card">
+            <div class="question-text">Siapa nama anda?</div>
+            <div class="input-container">
+                <input type="text" id="nama" placeholder="Jawaban Anda" class="text-input">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">Berapa umur anda?</div>
+            <div class="input-container">
+                <input type="text" id="umur" placeholder="Jawaban Anda" class="text-input">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">Apa jenis kelamin anda?</div>
+            <div class="radio-group">
+                <div class="option-item">
+                    <input type="radio" name="jenis_kelamin" id="choice1">
+                    <div class="option-text">Laki-laki</div>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="jenis_kelamin" id="choice2">
+                    <div class="option-text">Perempuan</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">Apakah anda perokok?</div>
+            <div class="radio-group">
+                <div class="option-item">
+                    <input type="radio" name="perokok" id="choice3">
+                    <div class="option-text">Ya</div>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="perokok" id="choice4">
+                    <div class="option-text">Tidak</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="question-text">Jika anda perokok, rokok apa yang anda pernah coba?</div>
+            <div class="checkbox-group">
+                <div class="option-item">
+                    <input type="checkbox" id="used1">
+                    <div class="option-text">Gudang Garam Filter</div>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" id="used2">
+                    <div class="option-text">Lucky Strike</div>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" id="used3">
+                    <div class="option-text">Marlboro</div>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" id="used4">
+                    <div class="option-text">Esse</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-container">
+            <button type="button" class="btn-submit">Kirim</button>
+            <button type="button" class="btn-reset">Kosongkan Formulir</button>
+        </div>
+
+    </div>
+
+    <div class="navigation-link">
+        <a href="pages/table.html">Table</a>
+    </div>
+
+</body>
 </html>
