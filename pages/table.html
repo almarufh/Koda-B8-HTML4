@@ -29,6 +29,45 @@
         <a href="../index.html" class="btn-back">Kembali ke Form</a>
     </div>
     <script>
+        const tableBody = document.getElementById("table-body");
+        const dataSaved = window.localStorage.getItem("sample");
+
+        if (dataSaved) {
+            const dataArray = JSON.parse(dataSaved);
+
+            dataArray.forEach((item, index) => {
+                const nama = item["nama-lengkap"] || "-";
+                const umur = item.Umur || "-";
+                const jk = item.jenis_kelamin || "-";
+                const perokok = item.perokok || "-";
+                const merk = Array.isArray(item.rokok) ? item.rokok.join(", ") : (item.rokok || "-");
+
+                const tableSample = document.createElement("tr")
+                const urut = document.createElement("td")
+                const namaSample = document.createElement("td")
+                const umurSample = document.createElement("td")
+                const jkSample = document.createElement("td")
+                const status = document.createElement("td")
+                const merkRokok = document.createElement("td")
+                urut.append(index + 1)
+                namaSample.append(nama)
+                umurSample.append(umur)
+                jkSample.append(jk)
+                status.append(perokok)
+                merkRokok.append(merk)
+
+                tableSample.append(urut, namaSample, umurSample, jkSample, status, merkRokok)
+                tableBody.append(tableSample)
+                });
+        } else {
+            const tableSample = document.createElement("tr")
+            const urut = document.createElement("td")
+            urut.append("Belum ada data survey tersimpan.")
+            urut.setAttribute("class", "empty-state")
+            urut.setAttribute("colspan", "6")
+            tableSample.append(urut)
+            tableBody.append(tableSample)
+        }
     </script>
 </body>
 </html>
