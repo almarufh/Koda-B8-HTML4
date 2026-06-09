@@ -36,7 +36,8 @@
             const dataArray = JSON.parse(dataSaved);
 
             dataArray.forEach((item, index) => {
-                const nama = item["nama-lengkap"] || "-";
+                console.log(dataArray)
+                const nama = item.nama_lengkap || "-";
                 const umur = item.Umur || "-";
                 const jk = item.jenis_kelamin || "-";
                 const perokok = item.perokok || "-";
