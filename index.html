@@ -17,21 +17,12 @@
     cursor: pointer;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
-.btn-reset {
-    background: none;
-    border: none;
-    color: #673ab7;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    padding: 10px 8px;
-}
 .navigation-link {
     margin-top: 24px;
     text-align: center;
 }
-.navigation-link a {
-    color: #673ab7;
+#navigation-link > a {
+    color: white;
     text-decoration: none;
     font-size: 14px;
 }
@@ -111,14 +102,11 @@
 
         <div class="action-container">
             <button type="submit" class="btn-submit">Kirim</button>
-            <button type="reset" class="btn-reset">Kosongkan Formulir</button>
+            <button type="reset" class="btn-submit">Kosongkan Formulir</button>
+            <a id="navigation-link" class="btn-submit"href="pages/table.html">Show Survey Results</a>
         </div>
 
     </form>
-
-    <div class="navigation-link">
-        <a href="pages/table.html">Table</a>
-    </div>
 
     <script>
         const form = document.querySelector(".form-container");
@@ -139,7 +127,6 @@
             window.localStorage.setItem("sample", JSON.stringify(dataArray));
 
             alert("Data anda berhasil disimpan!");
-            // form.reset();
         });
     </script>
 </body>
