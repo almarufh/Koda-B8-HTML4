@@ -38,8 +38,7 @@
     </style>
 </head>
 <body>
-
-    <div class="form-container">
+    <form class="form-container">
         
         <div class="form-header">
             <div class="form-title">Form Survey Perokok</div>
@@ -49,14 +48,14 @@
         <div class="card">
             <div class="question-text">Siapa nama anda?</div>
             <div class="input-container">
-                <input type="text" id="nama" placeholder="Jawaban Anda" class="text-input">
+                <input type="text" name="nama-lengkap" id="nama" placeholder="Jawaban Anda" class="text-input">
             </div>
         </div>
 
         <div class="card">
             <div class="question-text">Berapa umur anda?</div>
             <div class="input-container">
-                <input type="text" id="umur" placeholder="Jawaban Anda" class="text-input">
+                <input type="text" name="Umur" id="umur" placeholder="Jawaban Anda" class="text-input">
             </div>
         </div>
 
@@ -64,11 +63,11 @@
             <div class="question-text">Apa jenis kelamin anda?</div>
             <div class="radio-group">
                 <div class="option-item">
-                    <input type="radio" name="jenis_kelamin" id="choice1">
+                    <input type="radio" name="jenis_kelamin" id="choice1" value="Laki-laki">
                     <div class="option-text">Laki-laki</div>
                 </div>
                 <div class="option-item">
-                    <input type="radio" name="jenis_kelamin" id="choice2">
+                    <input type="radio" name="jenis_kelamin" id="choice2" value="Perempuan">
                     <div class="option-text">Perempuan</div>
                 </div>
             </div>
@@ -78,11 +77,11 @@
             <div class="question-text">Apakah anda perokok?</div>
             <div class="radio-group">
                 <div class="option-item">
-                    <input type="radio" name="perokok" id="choice3">
+                    <input type="radio" name="perokok" id="choice3" value="Perokok">
                     <div class="option-text">Ya</div>
                 </div>
                 <div class="option-item">
-                    <input type="radio" name="perokok" id="choice4">
+                    <input type="radio" name="perokok" id="choice4" value="Bukan Perokok">
                     <div class="option-text">Tidak</div>
                 </div>
             </div>
@@ -92,34 +91,56 @@
             <div class="question-text">Jika anda perokok, rokok apa yang anda pernah coba?</div>
             <div class="checkbox-group">
                 <div class="option-item">
-                    <input type="checkbox" id="used1">
+                    <input type="checkbox" id="used1" name="rokok" value="Gudang Garam Filter">
                     <div class="option-text">Gudang Garam Filter</div>
                 </div>
                 <div class="option-item">
-                    <input type="checkbox" id="used2">
+                    <input type="checkbox" id="used2" name="rokok" value="Lucky Strike">
                     <div class="option-text">Lucky Strike</div>
                 </div>
                 <div class="option-item">
-                    <input type="checkbox" id="used3">
+                    <input type="checkbox" id="used3" name="rokok" value="Marlboro">
                     <div class="option-text">Marlboro</div>
                 </div>
                 <div class="option-item">
-                    <input type="checkbox" id="used4">
+                    <input type="checkbox" id="used4" name="rokok" value="Esse">
                     <div class="option-text">Esse</div>
                 </div>
             </div>
         </div>
 
         <div class="action-container">
-            <button type="button" class="btn-submit">Kirim</button>
-            <button type="button" class="btn-reset">Kosongkan Formulir</button>
+            <button type="submit" class="btn-submit">Kirim</button>
+            <button type="reset" class="btn-reset">Kosongkan Formulir</button>
         </div>
 
-    </div>
+    </form>
 
     <div class="navigation-link">
         <a href="pages/table.html">Table</a>
     </div>
+    
+    <script>
+        const form = document.querySelector(".form-container");
+        
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            
+            const data = new FormData(e.target);
+            const newData = Object.fromEntries(data.entries());
+            newData.rokok = data.getAll("rokok");
+            const dataSaved = window.localStorage.getItem("sample");
+            let dataArray = [];
+            if (dataSaved) {
+                dataArray = JSON.parse(dataSaved);
+            }
+            dataArray.push(newData);
+            console.log("Data tersimpan:", dataArray);
+            window.localStorage.setItem("sample", JSON.stringify(dataArray));
 
+            alert("Data anda berhasil disimpan!");
+            // form.reset();
+        });
+    </script>
 </body>
 </html>
