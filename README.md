@@ -1,19 +1,33 @@
-# Form Perokok (Google Form Clone)
+# Form Survey Perokok
 
-## Fitur Utama
+Form untuk mendata sample apakah peroko dan roko merk apa yang pernah dikonsumsi
 
-1. Form data survey
+## Tech Stack
 
-Preview From Survey Kosong
-![preview](from.png)
+- HTML
+- TailwindCss
+- JQuery
 
-Preview From survey input
-![preview](fromInput.png)
-
-2. Table data hasil survey
-
-Preview Table Data Kosong
-![preview](tableEmpty.png)
-
-Preview Table Have Data Show
-![preview](tableShow.png)
+## Screenshot
+<table>
+    <tr>
+        <td>
+            <img src="1.png" alt="preview">
+        </td>
+        <td>
+            <img src="2.png" alt="preview">
+        </td>
+        <td>
+            <img src="11.png" alt="preview">
+        </td>
+        <td>
+            <img src="22.png" alt="preview">
+        </td>
+    </tr>
+    <tr>
+        <td>From Kosong</td>
+        <td>From Input</td>
+        <td>Data Kosong</td>
+        <td>DATA Sample</td>
+    </tr>
+</table>

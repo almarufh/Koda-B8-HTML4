@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Survey Perokok</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <style>
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body class="font-['Roboto',Arial,sans-serif] bg-[#f0ebf8] m-0 p-5 flex flex-col items-center">
     
@@ -90,34 +87,26 @@
         </div>
 
     </form>
+
     <script>
-        $(document).ready(function() {
-            $(".form-container").on("submit", function(e) {
-                e.preventDefault();
-                
-                const newData = {};
-                newData.rokok = []; 
-                $.each($(this).serializeArray(), function(index, field) {
-                    if (field.name === "rokok") {
-                        newData.rokok.push(field.value);
-                    } else {
-                        newData[field.name] = field.value;
-                    }
-                });
+        const form = document.querySelector(".form-container");
+        
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            
+            const data = new FormData(e.target);
+            const newData = Object.fromEntries(data.entries());
+            newData.rokok = data.getAll("rokok");
+            const dataSaved = window.localStorage.getItem("sample");
+            let dataArray = [];
+            if (dataSaved) {
+                dataArray = JSON.parse(dataSaved);
+            }
+            dataArray.push(newData);
+            console.log("Data tersimpan:", dataArray);
+            window.localStorage.setItem("sample", JSON.stringify(dataArray));
 
-                const dataSaved = window.localStorage.getItem("sample");
-                let dataArray = [];
-                
-                if (dataSaved) {
-                    dataArray = JSON.parse(dataSaved);
-                }
-                
-                dataArray.push(newData);
-                console.log("Data tersimpan:", dataArray);
-                window.localStorage.setItem("sample", JSON.stringify(dataArray));
-
-                alert("Data anda berhasil disimpan!");
-            });
+            alert("Data anda berhasil disimpan!");
         });
     </script>
 </body>

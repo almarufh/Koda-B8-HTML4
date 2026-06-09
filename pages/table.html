@@ -3,72 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Syrvey</title>
-    <link rel="stylesheet" href="/style.css">
-    <style>
-    </style>
+    <title>Data Survey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
-<body class="table">
-    <h2>Data Hasil Survey</h2>
-    <table>
-        <thead>
+<body class="font-['Arial',sans-serif] bg-[#f4f7f6] m-0 py-10 px-5 flex flex-col items-center">
+    
+    <h2 class="text-[#333] mb-5 text-2xl font-bold">Data Hasil Survey</h2>
+    
+    <table class="w-full max-w-[900px] border-collapse bg-white shadow-[0_4px_6px_rgba(0,0,0,0.1)] rounded-lg overflow-hidden mb-6">
+        <thead class="bg-[#673ab7] text-white">
             <tr>
-                <th>No.</th>
-                <th>Nama</th>
-                <th>Umur</th>
-                <th>Jenis Kelamin</th>
-                <th>Perokok</th>
-                <th>Merk Rokok</th>
+                <th class="w-[5%] p-3 px-4 text-left border-b border-[#e0e0e0] font-semibold uppercase text-sm">No.</th>
+                <th class="w-[25%] p-3 px-4 text-left border-b border-[#e0e0e0] font-semibold uppercase text-sm">Nama</th>
+                <th class="w-[10%] p-3 px-4 text-left border-b border-[#e0e0e0] font-semibold uppercase text-sm">Umur</th>
+                <th class="w-[20%] p-3 px-4 text-left border-b border-[#e0e0e0] font-semibold uppercase text-sm">Jenis Kelamin</th>
+                <th class="w-[15%] p-3 px-4 text-left border-b border-[#e0e0e0] font-semibold uppercase text-sm">Perokok</th>
+                <th class="w-[25%] p-3 px-4 text-left border-b border-[#e0e0e0] font-semibold uppercase text-sm">Merk Rokok</th>
             </tr>
         </thead>
         <tbody id="table-body">
         </tbody>
     </table>
 
-    <div class="action-container">
-        <a href="../index.html" class="btn-back">Kembali ke Form</a>
+    <div class="flex justify-center items-center gap-4">
+        <a href="../index.html" class="inline-block bg-[#673ab7] hover:bg-[#5e35b1] text-white no-underline py-2.5 px-6 rounded font-medium text-sm shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-colors duration-200">Kembali ke Form</a>
+        
+        <button id="btn-delete-all" class="inline-block bg-red-600 hover:bg-red-700 text-white border-none py-2.5 px-6 rounded font-medium text-sm cursor-pointer shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-colors duration-200">Hapus Semua Data</button>
     </div>
+
     <script>
-        const tableBody = document.getElementById("table-body");
-        const dataSaved = window.localStorage.getItem("sample");
+        $(document).ready(function() {
+            const $tableBody = $("#table-body");
+            
+             function renderTable() {
+                $tableBody.empty();
+                const dataSaved = window.localStorage.getItem("sample");
 
-        if (dataSaved) {
-            const dataArray = JSON.parse(dataSaved);
+                if (dataSaved && JSON.parse(dataSaved).length > 0) {
+                    const dataArray = JSON.parse(dataSaved);
 
-            dataArray.forEach((item, index) => {
-                console.log(dataArray)
-                const nama = item.nama_lengkap || "-";
-                const umur = item.Umur || "-";
-                const jk = item.jenis_kelamin || "-";
-                const perokok = item.perokok || "-";
-                const merk = Array.isArray(item.rokok) ? item.rokok.join(", ") : (item.rokok || "-");
+                    $.each(dataArray, function(index, item) {
+                        const nama = item.nama_lengkap || "-";
+                        const umur = item.Umur || "-";
+                        const jk = item.jenis_kelamin || "-";
+                        const perokok = item.perokok || "-";
+                        const merk = Array.isArray(item.rokok) ? item.rokok.join(", ") : (item.rokok || "-");
 
-                const tableSample = document.createElement("tr")
-                const urut = document.createElement("td")
-                const namaSample = document.createElement("td")
-                const umurSample = document.createElement("td")
-                const jkSample = document.createElement("td")
-                const status = document.createElement("td")
-                const merkRokok = document.createElement("td")
-                urut.append(index + 1)
-                namaSample.append(nama)
-                umurSample.append(umur)
-                jkSample.append(jk)
-                status.append(perokok)
-                merkRokok.append(merk)
+                        const rowHtml = `
+                            <tr class="hover:bg-[#f9f9f9] transition-colors">
+                                <td class="p-3 px-4 text-left border-b border-[#e0e0e0] text-[15px] text-[#444]">${index + 1}</td>
+                                <td class="p-3 px-4 text-left border-b border-[#e0e0e0] text-[15px] text-[#444]">${nama}</td>
+                                <td class="p-3 px-4 text-left border-b border-[#e0e0e0] text-[15px] text-[#444]">${umur}</td>
+                                <td class="p-3 px-4 text-left border-b border-[#e0e0e0] text-[15px] text-[#444]">${jk}</td>
+                                <td class="p-3 px-4 text-left border-b border-[#e0e0e0] text-[15px] text-[#444]">${perokok}</td>
+                                <td class="p-3 px-4 text-left border-b border-[#e0e0e0] text-[15px] text-[#444]">${merk}</td>
+                            </tr>
+                        `;
+                        $tableBody.append(rowHtml);
+                    });
+                } else {
+                    const emptyRow = `
+                        <tr>
+                            <td colspan="6" class="p-3 px-4 border-b border-[#e0e0e0] text-center italic text-[#888]">
+                                Belum ada data survey tersimpan.
+                            </td>
+                        </tr>
+                    `;
+                    $tableBody.append(emptyRow);
+                }
+            }
 
-                tableSample.append(urut, namaSample, umurSample, jkSample, status, merkRokok)
-                tableBody.append(tableSample)
-                });
-        } else {
-            const tableSample = document.createElement("tr")
-            const urut = document.createElement("td")
-            urut.append("Belum ada data survey tersimpan.")
-            urut.setAttribute("class", "empty-state")
-            urut.setAttribute("colspan", "6")
-            tableSample.append(urut)
-            tableBody.append(tableSample)
-        }
+            renderTable();
+
+            $("#btn-delete-all").on("click", function() {
+                const isConfirm = confirm("Apakah Anda yakin ingin menghapus seluruh data survey?");
+                
+                if (isConfirm) {
+                    window.localStorage.removeItem("sample");
+                    renderTable();
+                    
+                    alert("Seluruh data berhasil dihapus!");
+                }
+            });
+        });
     </script>
 </body>
 </html>
